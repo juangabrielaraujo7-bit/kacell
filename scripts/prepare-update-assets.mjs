@@ -32,3 +32,13 @@ await writeFile('artifacts/update-assets.json',JSON.stringify(report,null,2));
 const logos=[];for(const [i,name] of ['iphone.webp','samsung.webp','motorola.svg','xiaomi.webp'].entries()){logos.push({input:await sharp('public/images/brands/'+name).resize(250,90,{fit:'contain',background:{r:0,g:0,b:0,alpha:0}}).png().toBuffer(),left:i*280+15,top:25});}
 await sharp({create:{width:1120,height:140,channels:3,background:'#f7f8f7'}}).composite(logos).png().toFile('artifacts/brands-updated.png');
 console.log(JSON.stringify(report));
+
+// Google Reviews logo supplied for the animated review section.
+const googleSource='public/oogle-review-logo-png-google-reviews-transparent.webp';
+const googleRaw=await sharp(googleSource).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+for(let i=0;i<googleRaw.data.length;i+=4){
+  const low=Math.min(googleRaw.data[i],googleRaw.data[i+1],googleRaw.data[i+2]);
+  const high=Math.max(googleRaw.data[i],googleRaw.data[i+1],googleRaw.data[i+2]);
+  if(low>195&&high-low<25)googleRaw.data[i+3]=0;
+}
+await sharp(googleRaw.data,{raw:{width:googleRaw.info.width,height:googleRaw.info.height,channels:4}}).trim().resize({width:420,withoutEnlargement:true}).webp({lossless:true}).toFile('public/images/brands/google-reviews.webp');

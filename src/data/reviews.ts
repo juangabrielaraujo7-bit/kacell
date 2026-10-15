@@ -8,5 +8,5 @@ export const reviewArchive = [
   { id:'mauricio', author:'Mauricio Ribeiro', rating:5, date:'5 meses atrás', source:'Captura de tela 2026-10-15 120017.png', text:'Apenas uma palavra: incrível!\nParabéns pelo profissionalismo. Excelente.' },
   { id:'guilherme', author:'GUILHERME FRATTES JUNQUEIRA', rating:5, date:'4 anos atrás', source:'Captura de tela 2026-10-15 120029.png', text:'Excelente profissional! Já consertou dois celulares meus utilizando peças originais e os aparelhos ficaram perfeitos! O preço é justo e condizente com a qualidade das peças e do serviço realizado.' },
 ];
-const selected = ['eliezer','nivaldo','luiz'];
+const selected = ['eliezer','nivaldo','luiz','clayton','mauricio','guilherme'];
 export const selectedReviews = selected.map(id=>reviewArchive.find(review=>review.id===id)!);

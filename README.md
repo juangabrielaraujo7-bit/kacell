@@ -20,7 +20,7 @@ O resultado de produção fica em `dist/`. Não é necessário banco de dados, s
 
 - `src/data/business.ts`: contatos, endereço, horários, mídia real da abertura, fachada, perguntas, resultados e avaliações.
 - `src/data/services.ts`: seis serviços, textos, sintomas, perguntas e serviços relacionados.
-- `src/data/reviews.ts`: seis avaliações transcritas e seleção das três exibidas.
+- `src/data/reviews.ts`: seis avaliações transcritas e seleção das seis exibidas.
 - `src/styles/global.css`: tokens e composição responsiva.
 - `src/components/`: cabeçalho, rodapé, cards, FAQ, localização e prova social.
 - `public/images/`: imagens otimizadas em WebP com transparência real, em três resoluções.
@@ -52,12 +52,12 @@ Após conectar o domínio, conferir HTTPS, redirecionamento HTTP, domínio prefe
 
 ## Atualizar mídias e avaliações
 
-As listas `results` e `reviews` contêm três fotografias reais e três avaliações dos materiais recebidos em 15/10/2026. As demais avaliações estão preservadas em `src/data/reviews.ts`. Não há fotos fictícias, depoimentos inventados ou nota geral presumida.
+As listas `results` e `reviews` contêm três fotografias reais e seis avaliações dos materiais recebidos em 15/10/2026. As transcrições estão preservadas em `src/data/reviews.ts`. Não há fotos fictícias, depoimentos inventados ou nota geral presumida.
 
 1. Adicione fotografias reais autorizadas em `public/images/`.
 2. Preencha os objetos tipados em `business.ts`, incluindo dimensões e texto alternativo.
 3. Para antes e depois, use uma montagem inteira por item. O botão amplia em um diálogo acessível.
-4. Para avaliações, transcreva o conteúdo real, autoria, nota e data da fonte. Preencha `reviewsUpdatedAt` e confira o perfil Google. O carrossel é manual, com botões, teclado e gesto nativo de rolagem.
+4. Para avaliações, transcreva o conteúdo real, autoria, nota e data da fonte. Preencha `reviewsUpdatedAt` e confira o perfil Google. As avaliações passam em duas fileiras, com pausa por botão, foco e mouse, respeitando movimento reduzido.
 5. Preencha horário somente após confirmação. Garantia, parcelas e prazo específico nunca devem ser presumidos.
 6. Execute as verificações e revise o conteúdo visualmente antes de enviar a alteração.
 

@@ -1,6 +1,7 @@
 ---
-import { results, reviews, business } from '../data/business';
+import { results, business } from '../data/business';
 import Icon from './Icon.astro';
+import ReviewMarquee from './ReviewMarquee.astro';
 ---
 <section id="antes-e-depois" class="section dark">
   <div class="container">
@@ -15,15 +16,11 @@ import Icon from './Icon.astro';
   <dialog id="gallery-dialog" aria-label="Resultado de reparo ampliado"><button class="dialog-close" aria-label="Fechar imagem"><Icon name="x"/></button><div class="gallery-image"></div><p class="gallery-caption"></p></dialog>
 </section>
 <section id="avaliacoes" class="section light">
-  <div class="container" data-carousel>
-    <div class="section-heading"><span class="eyebrow">Avaliações do Google</span><h2>Quem trouxe o aparelho<br />conta a experiência.</h2><a class="text-link" href={business.maps} target="_blank" rel="noopener noreferrer">Ver avaliações no Google <Icon name="arrow-up-right" size={18}/></a></div>
-    <div class="review-track" role="region" aria-label="Três avaliações de clientes no Google" tabindex="0">{reviews.map(review=><figure class="review-card">
-      <div class="review-top"><p class="review-rating" role="img" aria-label={`${review.rating} de 5 estrelas`}>{Array.from({length:review.rating},()=> <Icon name="star-filled" size={18}/>)}</p><span class="review-source"><Icon name="brand-google" size={19}/>Google</span></div>
-      <blockquote>{review.excerpt || review.text}</blockquote>
-      {review.excerpt && <p class="review-excerpt">Trecho da avaliação</p>}
-      <figcaption><strong>{review.author}</strong><span>{review.date}</span></figcaption>
-    </figure>)}</div>
-    <div class="carousel-controls"><span aria-live="polite" data-carousel-status/><button data-direction="-1" aria-label="Avaliação anterior"><Icon name="arrow-left"/></button><button data-direction="1" aria-label="Próxima avaliação"><Icon name="arrow-right"/></button></div>
-    <p class="review-dates-note">Datas relativas ao registro das avaliações em outubro de 2026.</p>
+  <div class="container reviews-layout">
+    <div class="reviews-copy"><span class="eyebrow">Avaliações do Google</span><h2>Quem trouxe o aparelho<br />conta a experiência.</h2><a class="text-link" href={business.maps} target="_blank" rel="noopener noreferrer">Ver avaliações no Google <Icon name="arrow-up-right" size={18}/></a>
+      <div class="google-summary"><img src="/images/brands/google-reviews.webp" alt="Google Reviews" width="420" height="169" loading="lazy"/><span><strong>5,0</strong><span>de 5 no Google</span></span></div>
+      <p class="review-dates-note">Datas relativas aos registros enviados, de outubro de 2026.</p>
+    </div>
+    <ReviewMarquee />
   </div>
 </section>

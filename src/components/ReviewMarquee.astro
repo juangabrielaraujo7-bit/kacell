@@ -1,0 +1,22 @@
+---
+import { reviews } from '../data/business';
+import Icon from './Icon.astro';
+const lanes = [reviews.slice(0,3), reviews.slice(3,6)];
+---
+<div class="review-motion" data-review-motion>
+  <div class="review-window" role="region" aria-label="Seis avaliações de clientes no Google. O movimento pausa ao passar o mouse ou focar esta área." tabindex="0">
+    <div class="review-perspective">
+      {lanes.map((lane,index)=><div class:list={['review-lane',{'is-reversed':index===1}]}>
+        {[0,1].map(copy=><div class="review-group" aria-hidden={copy===1 ? 'true' : undefined} inert={copy===1}>
+          {lane.map(review=><figure class="review-card">
+            <div class="review-top"><p class="review-rating" role="img" aria-label={`${review.rating} de 5 estrelas`}>{Array.from({length:review.rating},()=> <Icon name="star-filled" size={15}/>)}</p><Icon name="brand-google" size={17}/></div>
+            <blockquote>{review.excerpt || review.text}</blockquote>
+            {review.excerpt && <p class="review-excerpt">Trecho da avaliação</p>}
+            <figcaption><strong>{review.author}</strong><span>{review.date}</span></figcaption>
+          </figure>)}
+        </div>)}
+      </div>)}
+    </div>
+  </div>
+  <button class="review-pause" type="button" data-review-pause aria-pressed="false"><Icon name="player-pause" size={16}/><span>Pausar avaliações</span></button>
+</div>

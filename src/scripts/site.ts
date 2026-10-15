@@ -42,15 +42,15 @@ document.querySelector<HTMLButtonElement>('[data-load-map]')?.addEventListener('
   iframe.focus();
   button.remove();
 });
-document.querySelectorAll<HTMLElement>('[data-carousel]').forEach(carousel => {
-  const track = carousel.querySelector<HTMLElement>('.review-track');
-  const status = carousel.querySelector<HTMLElement>('[data-carousel-status]');
-  if(!track) return;
-  const update = () => { const cards = [...track.children] as HTMLElement[]; const index = cards.reduce((best, card, i) => Math.abs(card.offsetLeft-track.offsetLeft-track.scrollLeft)<Math.abs(cards[best].offsetLeft-track.offsetLeft-track.scrollLeft)?i:best,0); if(status) status.textContent=`Avaliação ${index+1} de ${cards.length}`; };
-  carousel.querySelectorAll<HTMLButtonElement>('[data-direction]').forEach(button => button.addEventListener('click',()=>{ track.scrollBy({left:Number(button.dataset.direction)*track.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }));
-  track.addEventListener('scroll',update,{passive:true});
-  track.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();track.scrollBy({left:(event.key==='ArrowRight'?1:-1)*track.clientWidth,behavior:'instant'});}});
-  update();
+document.querySelectorAll<HTMLElement>('[data-review-motion]').forEach(host=>{
+  const button=host.querySelector<HTMLButtonElement>('[data-review-pause]');
+  button?.addEventListener('click',()=>{
+    const paused=host.dataset.paused!=='true';
+    host.dataset.paused=String(paused);
+    button.setAttribute('aria-pressed',String(paused));
+    const label=button.querySelector('span');
+    if(label) label.textContent=paused?'Retomar avaliações':'Pausar avaliações';
+  });
 });
 const gallery = document.querySelector<HTMLDialogElement>('#gallery-dialog');
 let galleryTrigger: HTMLButtonElement | null = null;

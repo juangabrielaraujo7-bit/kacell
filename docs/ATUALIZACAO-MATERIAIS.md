@@ -48,3 +48,12 @@ Prévia: http://127.0.0.1:4323/ após iniciar `node scripts/serve.mjs`.
 Capturas das novas seções: `artifacts/antes-e-depois-1440.png`, `artifacts/antes-e-depois-390.png`, `artifacts/avaliacoes-1440.png` e `artifacts/avaliacoes-390.png`.
 
 Relatório de verificações automatizadas: `artifacts/verification.json`. Atualização validada e autorizada para envio à branch main. As próximas alterações deste site também devem ser enviadas ao GitHub após validação, conforme orientação do responsável.
+
+
+## Avaliações em movimento — revisão posterior
+
+As seis avaliações passam a ser exibidas, em duas colunas verticais com perspectiva no computador e duas fileiras horizontais no celular. Nomes, notas, datas e transcrições foram preservados; Nivaldo continua como trecho identificado. O movimento pausa ao passar o mouse, focar a área ou acionar o botão de pausa. A preferência de movimento reduzido e a navegação sem JavaScript mostram os registros sem animação.
+
+A logo Google Reviews foi fornecida em public/oogle-review-logo-png-google-reviews-transparent.webp. O fundo quadriculado foi removido e a versão otimizada fica em public/images/brands/google-reviews.webp. A nota geral 5,0 foi informada pelo responsável nesta solicitação, sem consulta automática ao Google.
+
+O efeito do componente React enviado foi adaptado para Astro e CSS na arquitetura existente, sem dependências adicionais.
