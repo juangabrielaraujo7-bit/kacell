@@ -1,0 +1,21 @@
+---
+import { results } from '../data/business';
+import Icon from './Icon.astro';
+---
+<div class="result-carousel" data-result-carousel role="region" aria-roledescription="carrossel" aria-label="Antes e depois dos reparos">
+  <div class="result-stage" tabindex="0" aria-label="Use as setas do teclado para alternar os resultados">
+    {results.map((result,i)=><figure class="result-card result-slide" data-result-slide role="group" aria-roledescription="slide" aria-label={`${i+1} de ${results.length}: ${result.caption}`}>
+      <button class="gallery-trigger" data-gallery-src={result.src} data-gallery-alt={result.alt} data-gallery-caption={result.caption} aria-label={`Ampliar resultado ${i+1}: ${result.caption}`}>
+        <img src={result.card} srcset={`${result.thumbnail} 440w, ${result.card} ${result.width}w`} sizes="(max-width: 767px) 76vw, 400px" alt={result.alt} width={result.width} height={result.height} loading="lazy" decoding="async"/>
+      </button>
+      <figcaption><div class="result-title"><h3>{result.caption}</h3><Icon name="zoom-in" size={20}/></div><div class="result-legend"><span><strong>Depois</strong>Aparelho à esquerda</span><span><strong>Antes</strong>Peça à direita</span></div></figcaption>
+    </figure>)}
+  </div>
+  <div class="result-navigation">
+    <button type="button" data-result-direction="-1" aria-label="Resultado anterior"><Icon name="chevron-left"/></button>
+    <span data-result-count aria-hidden="true">2 / {results.length}</span>
+    <button type="button" data-result-direction="1" aria-label="Próximo resultado"><Icon name="chevron-right"/></button>
+    <button type="button" class="result-play" data-result-pause aria-pressed="false"><Icon name="player-pause" size={16}/><span>Pausar</span></button>
+  </div>
+  <p class="visually-hidden" data-result-status aria-live="polite" aria-atomic="true"></p>
+</div>

@@ -24,7 +24,7 @@ O resultado de produção fica em `dist/`. Não é necessário banco de dados, s
 - `src/styles/global.css`: tokens e composição responsiva.
 - `src/components/`: cabeçalho, rodapé, cards, FAQ, localização e prova social.
 - `public/images/`: imagens otimizadas em WebP com transparência real, em três resoluções.
-- `src/scripts/site.ts`: menus, mapa sob demanda, galeria, carrossel e evento de conversão.
+- `src/scripts/site.ts`: menus, mapa incorporado automático, galeria, carrossel e evento de conversão.
 - `docs/ENTREGA.md`: decisões, materiais pendentes e validação.
 
 As imagens originais e o briefing foram preservados na pasta local fornecida pelo responsável. Não foram enviados ao repositório público; guarde um backup desses originais. `scripts/prepare-assets.mjs` permite repetir a preparação se os arquivos originais forem colocados na raiz, com seus nomes originais. A geração inicial dos assets já foi concluída: o build não depende desses arquivos.
@@ -63,7 +63,7 @@ As listas `results` e `reviews` contêm três fotografias reais e seis avaliaç�
 
 ## Privacidade e medição
 
-Não há analytics, publicidade, formulário, login ou cookies próprios de rastreamento. O mapa só é inserido após clique; fontes e imagens são locais. A política de privacidade descreve esse comportamento.
+Não há analytics, publicidade, formulário, login ou cookies próprios de rastreamento. O mapa do Google é carregado automaticamente; fontes e imagens são locais. A política de privacidade descreve esse comportamento.
 
 O evento local `kacell:conversion` prepara uma futura integração autorizada de analytics. Seu `detail` contém apenas `event`, `page`, `service` e `position`. Nenhum destino analítico está configurado, e o conteúdo das mensagens não é coletado. Cliques indicam intenção de contato, não mensagens recebidas ou vendas.
 

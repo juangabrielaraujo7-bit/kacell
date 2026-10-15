@@ -1,17 +1,13 @@
 ---
-import { results, business } from '../data/business';
+import { business } from '../data/business';
 import Icon from './Icon.astro';
 import ReviewMarquee from './ReviewMarquee.astro';
+import ResultCarousel from './ResultCarousel.astro';
 ---
 <section id="antes-e-depois" class="section dark">
   <div class="container">
     <div class="section-heading"><h2>Antes e depois.<br /><span class="muted">O cuidado aparece.</span></h2><p>Resultados reais de reparos realizados na Kacell.<br />O aparelho reparado e a peça danificada, lado a lado.</p></div>
-    <div class="results-grid">{results.map((result,i)=><figure class="result-card">
-      <button class="gallery-trigger" data-gallery-src={result.src} data-gallery-alt={result.alt} data-gallery-caption={result.caption} aria-label={`Ampliar resultado ${i+1}: ${result.caption}`}>
-        <img src={result.card} srcset={`${result.thumbnail} 440w, ${result.card} ${result.width}w`} sizes="(max-width: 767px) 90vw, 30vw" alt={result.alt} width={result.width} height={result.height} loading="lazy" decoding="async"/>
-      </button>
-      <figcaption><div class="result-title"><h3>{result.caption}</h3><Icon name="zoom-in" size={20}/></div><div class="result-legend"><span><strong>Depois</strong>Aparelho à esquerda</span><span><strong>Antes</strong>Peça à direita</span></div></figcaption>
-    </figure>)}</div>
+    <ResultCarousel />
   </div>
   <dialog id="gallery-dialog" aria-label="Resultado de reparo ampliado"><button class="dialog-close" aria-label="Fechar imagem"><Icon name="x"/></button><div class="gallery-image"></div><p class="gallery-caption"></p></dialog>
 </section>

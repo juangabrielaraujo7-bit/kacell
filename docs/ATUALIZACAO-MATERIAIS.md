@@ -66,3 +66,12 @@ Origem: public/hero/25c7d364-f393-4fa9-954a-8590db0716cb.png (921 × 1707, com t
 O brilho acompanha o canal de transparência por drop-shadow em CSS, com luz difusa adicional atrás do aparelho. Gradientes laterais usam baixa opacidade; efeitos mais fracos no celular. Estilos em src/styles/hero.css; preparação reproduzível em scripts/prepare-hero.mjs.
 
 Conferência: sete larguras (320, 390, 430, 768, 1024, 1440 e 1920 pixels), imagem completa, ordem dos elementos, altura compacta, ausência de rolagem horizontal, transparência e contraste. Capturas em artifacts/hero-1440.png e artifacts/hero-390.png; relatório em artifacts/hero-verification.json.
+
+
+## Mapa automático e carrossel Antes e depois
+
+Conforme confirmação do responsável, o efeito do prompt foi aplicado às fotos de Antes e depois. A foto central fica nítida e as laterais aparecem menores, com perspectiva e desfoque. Há avanço automático a cada quatro segundos enquanto a seção está visível, botões, teclado e gesto horizontal. A rotação pausa durante interação, ao abrir a ampliação ou por botão; movimento reduzido desativa a rotação automática. Sem JavaScript, as três fotos continuam disponíveis em grade. As imagens reais e suas legendas foram preservadas.
+
+O mapa Google é carregado automaticamente no HTML, com link direto para abrir a localização. O botão Carregar mapa foi removido. A descrição de privacidade foi atualizada para refletir o carregamento automático.
+
+Verificações específicas em scripts/verify-result-carousel.mjs; capturas em artifacts/carrossel-resultados-1440.png, artifacts/carrossel-resultados-390.png e artifacts/mapa-automatico-1440.png.

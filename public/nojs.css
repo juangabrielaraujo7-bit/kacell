@@ -1,2 +1,2 @@
 @media(max-width:1023px){.site-header .header-inner{height:auto;flex-wrap:wrap;padding-block:12px}.site-header .main-nav{display:flex;position:static;flex-basis:100%;gap:8px 20px;flex-direction:row;flex-wrap:wrap;padding:0;max-height:none}.site-header .main-nav>a:not(.button){font-size:12px;padding-block:8px}.site-header .services-dropdown{flex-basis:100%}.site-header .menu-toggle{display:none}}
-[data-load-map],.carousel-controls{display:none}
+.result-navigation{display:none}

@@ -55,8 +55,8 @@ try{
   await page.keyboard.press('Escape');assert.equal(await menu.getAttribute('aria-expanded'),'false');assert(await menu.evaluate(el=>el===document.activeElement));
   await menu.click();await page.locator('.main-nav>a[href="/#localizacao"]').click();assert.equal(await menu.getAttribute('aria-expanded'),'false');
   const question=page.locator('.faq-item').first();await question.locator('summary').click();assert(await question.getAttribute('open')!==null);assert(await question.locator('.faq-answer').isVisible());
-  assert.equal(await page.locator('iframe').count(),0);await page.getByRole('button',{name:'Carregar mapa'}).click();assert.equal(await page.locator('iframe').count(),1);assert((await page.locator('iframe').getAttribute('src')).startsWith('https://www.google.com/maps'));
-  report.interaction.push('Mobile menu, dropdown, Escape and focus return','FAQ opens','Map only inserted after visitor action');
+  assert.equal(await page.locator('iframe').count(),1);assert.equal(await page.locator('iframe').getAttribute('loading'),'eager');assert.equal(await page.locator('[data-load-map]').count(),0);assert((await page.locator('iframe').getAttribute('src')).startsWith('https://www.google.com/maps'));
+  report.interaction.push('Mobile menu, dropdown, Escape and focus return','FAQ opens','Google Map present immediately without visitor action');
   await page.goto(origin,{waitUntil:'networkidle'});await page.evaluate(()=>{window.__event=null;window.addEventListener('kacell:conversion',e=>{window.__event=e.detail});document.querySelector('a[data-event]').addEventListener('click',e=>e.preventDefault());});await page.locator('a[data-event]').first().dispatchEvent('click');const event=await page.evaluate(()=>window.__event);assert(event?.event==='whatsapp_click');assert(!JSON.stringify(event).includes('551599'));report.interaction.push('Anonymous conversion hook fires without visitor data');
   await page.setViewportSize({width:844,height:390});await page.goto(origin);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.setViewportSize({width:640,height:450});await page.goto(origin);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));report.interaction.push('Landscape and 200% equivalent CSS viewport reflow');
@@ -72,7 +72,7 @@ try{
     for(const section of ['antes-e-depois','avaliacoes'])await page.locator('#'+section).screenshot({path:`artifacts/${section}-${width}.png`});
   }
   await page.setViewportSize({width:390,height:844});
-  const trigger=page.locator('[data-gallery-src]').first();await trigger.click();
+  const trigger=page.locator('[data-position="center"] [data-gallery-src]');await trigger.click();
   assert(await page.locator('#gallery-dialog').isVisible());
   await page.locator('#gallery-dialog img').evaluate(img=>img.decode());
   await page.keyboard.press('Escape');assert(!(await page.locator('#gallery-dialog').isVisible()));
