@@ -77,8 +77,7 @@ document.querySelectorAll<HTMLElement>('[data-review-motion]').forEach(host=>{
     const paused=host.dataset.paused!=='true';
     host.dataset.paused=String(paused);
     button.setAttribute('aria-pressed',String(paused));
-    const label=button.querySelector('span');
-    if(label) label.textContent=paused?'Retomar avaliações':'Pausar avaliações';
+    button.setAttribute('aria-label',paused?'Retomar avaliações':'Pausar avaliações');
   });
 });
 const gallery = document.querySelector<HTMLDialogElement>('#gallery-dialog');
