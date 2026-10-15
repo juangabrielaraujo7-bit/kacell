@@ -8,7 +8,7 @@ export const business = {
   maps: 'https://maps.app.goo.gl/ygaGbigbcGGphaYy7',
   instagram: 'https://www.instagram.com/kacellmundodatecnologia/',
   hours: null as string | null,
-  heroMedia: null as { src: string; alt: string; width: number; height: number } | null,
+  heroMedia: { src:'/images/hero/kacell-phone-520.webp', alt:'Celular exibindo o perfil da Kacell no Google, com fotos dos reparos e informações de contato', width:921, height:1707 },
   facade: null as { src: string; alt: string; width: number; height: number } | null,
 };
 export const whatsappUrl = (service?: string) => `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(service ? `Olá, Kacell! Vim pelo site e gostaria de um orçamento para ${service}. Meu aparelho é:` : 'Olá, Kacell! Vim pelo site e gostaria de um orçamento para meu aparelho.')}`;

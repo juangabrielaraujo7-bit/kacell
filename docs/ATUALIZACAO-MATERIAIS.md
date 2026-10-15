@@ -57,3 +57,12 @@ As seis avaliações passam a ser exibidas, em duas colunas verticais com perspe
 A logo Google Reviews foi fornecida em public/oogle-review-logo-png-google-reviews-transparent.webp. O fundo quadriculado foi removido e a versão otimizada fica em public/images/brands/google-reviews.webp. A nota geral 5,0 foi informada pelo responsável nesta solicitação, sem consulta automática ao Google.
 
 O efeito do componente React enviado foi adaptado para Astro e CSS na arquitetura existente, sem dependências adicionais.
+
+
+## Hero com celular — 15/10/2026
+
+Origem: public/hero/25c7d364-f393-4fa9-954a-8590db0716cb.png (921 × 1707, com transparência). O aparelho aparece inteiro à direita do título e dos botões no desktop e abaixo deles no celular. Foram produzidas versões WebP sem perdas, com 300, 520 e 921 pixels de largura, em public/images/hero/. A tela e o conteúdo da imagem não foram retocados.
+
+O brilho acompanha o canal de transparência por drop-shadow em CSS, com luz difusa adicional atrás do aparelho. Gradientes laterais usam baixa opacidade; efeitos mais fracos no celular. Estilos em src/styles/hero.css; preparação reproduzível em scripts/prepare-hero.mjs.
+
+Conferência: sete larguras (320, 390, 430, 768, 1024, 1440 e 1920 pixels), imagem completa, ordem dos elementos, altura compacta, ausência de rolagem horizontal, transparência e contraste. Capturas em artifacts/hero-1440.png e artifacts/hero-390.png; relatório em artifacts/hero-verification.json.
