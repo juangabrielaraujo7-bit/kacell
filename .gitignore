@@ -1,0 +1,11 @@
+node_modules/
+.npm-cache/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.vercel/
+artifacts/
+publish-bundle.json
+*.log

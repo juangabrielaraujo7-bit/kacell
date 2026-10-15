@@ -1,0 +1,9 @@
+---
+import Icon from './Icon.astro';
+import { whatsappUrl } from '../data/business';
+interface Props { label?: string; service?: string; position: string; secondary?: boolean; class?: string }
+const { label = 'Pedir orçamento', service, position, secondary = false, class: className = '' } = Astro.props;
+---
+<a class:list={['button', secondary ? 'button-outline' : 'button-green', className]} href={whatsappUrl(service)} target="_blank" rel="noopener noreferrer" data-event="whatsapp_click" data-position={position} data-service={service || 'geral'}>
+  <Icon name="brand-whatsapp" size={21} /><span>{label}</span><Icon name="arrow-up-right" size={18} />
+</a>

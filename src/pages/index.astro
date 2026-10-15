@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactButton from '../components/ContactButton.astro';
+import Icon from '../components/Icon.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Faq from '../components/Faq.astro';
+import SocialProof from '../components/SocialProof.astro';
+import Location from '../components/Location.astro';
+import { services } from '../data/services';
+import { business, homeFaq } from '../data/business';
+const benefits=[{icon:'shield-check',title:'Garantia nos reparos',text:'Cuidado que continua depois do serviço. Consulte prazo e condições.'},{icon:'message-circle',title:'Orçamento gratuito',text:'Entenda as opções para o seu aparelho antes de decidir.'},{icon:'credit-card',title:'Pode parcelar',text:'Consulte as formas de pagamento e as condições disponíveis.'},{icon:'clock-hour-4',title:'Sua rotina de volta',text:'Alguns reparos no mesmo dia, conforme avaliação e peças disponíveis.'}];
+---
+<Layout title="Assistência Técnica de Celulares em Sorocaba | Kacell" description="Reparo de celulares e tablets na Vila Hortência, Sorocaba. Troca de tela, vidro, bateria e mais. Orçamento gratuito e contato direto pelo WhatsApp.">
+  <section class:list={['hero', 'dark', { 'hero-with-media': !!business.heroMedia }]}>
+    <div class="container hero-inner"><div class="hero-copy"><p class="hero-location"><Icon name="map-pin" size={16}/>Assistência técnica em Sorocaba <span>• Vila Hortência</span></p><h1>Tela quebrada?<br /><span>Celular com defeito?</span></h1><div class="button-row"><ContactButton position="hero"/><a class="button button-ghost" href="#servicos">Ver serviços <Icon name="arrow-down" size={18}/></a></div></div>{business.heroMedia ? <img class="hero-media" src={business.heroMedia.src} alt={business.heroMedia.alt} width={business.heroMedia.width} height={business.heroMedia.height} fetchpriority="high"/> : <div class="hero-brand-art" aria-hidden="true"><img src="/images/symbol.webp" width="360" height="360" alt=""/></div>}</div>
+  </section>
+  <section class="section light services-section" id="servicos"><div class="container"><div class="section-heading"><h2>Qual reparo seu<br class="desktop-break"/> aparelho precisa?</h2><p>Do vidro trincado à bateria que não dura.<br />Encontre o serviço e fale direto com a nossa equipe.</p></div><div class="services-grid">{services.map(service=><ServiceCard service={service}/>)}</div><div class="service-help"><span><Icon name="message-circle-question" size={23}/><strong>Não sabe qual é o problema?</strong></span><a href={`https://wa.me/${business.whatsapp}?text=${encodeURIComponent('Olá, Kacell! Meu aparelho está com um problema e gostaria de orientação. O modelo é:')}`} target="_blank" rel="noopener noreferrer" data-event="whatsapp_click" data-position="ajuda-servicos" class="text-link">Conte para a gente <Icon name="arrow-up-right" size={18}/></a></div></div></section>
+  <SocialProof/>
+  <section class="section dark benefits-section" id="diferenciais"><div class="container"><div class="section-heading"><span class="eyebrow">Cuidado em cada detalhe</span><h2>Seu aparelho importa.<br /><span class="muted">Sua confiança também.</span></h2></div><div class="benefits-grid">{benefits.map(item=><article><Icon name={item.icon} size={31}/><h3>{item.title}</h3><p>{item.text}</p></article>)}</div><div class="google-link"><span>Conheça também o nosso perfil no Google.</span><a class="text-link" href={business.maps} target="_blank" rel="noopener noreferrer">Ver perfil da Kacell <Icon name="arrow-up-right" size={18}/></a></div></div></section>
+  <section class="section light brands-section"><div class="container"><div class="section-heading centered"><h2>Diferentes marcas.<br />O mesmo cuidado.</h2><p>Assistência para celulares e tablets.<br />Consulte o atendimento para o seu modelo.</p></div><ul class="brand-list" aria-label="Marcas atendidas"><li><Icon name="brand-apple" size={34}/><span>Apple / iPhone</span></li><li><span class="brand-samsung">SAMSUNG</span></li><li><span class="brand-motorola">motorola</span></li><li><span class="brand-xiaomi">xiaomi</span></li></ul><p class="brand-note">Marcas atendidas. Não implica vínculo de assistência autorizada.</p></div></section>
+  <section class="section dark faq-section" id="duvidas"><div class="container faq-grid"><div class="section-heading"><h2>Uma dúvida<br />antes de chamar?</h2><p>Algumas respostas para facilitar<br class="desktop-break"/> o seu próximo passo.</p><ContactButton label="Falar com a equipe" position="duvidas" secondary/></div><Faq items={homeFaq}/></div></section>
+  <Location/>
+</Layout>

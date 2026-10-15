@@ -1,0 +1,12 @@
+---
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+interface Props { name: string; size?: number; class?: string }
+const { name, size = 22, class: className = '' } = Astro.props;
+const safeName = /^[a-z0-9-]+$/.test(name) ? name : 'arrow-right';
+const iconPath = safeName.endsWith('-filled') ? `filled/${safeName.replace(/-filled$/, '')}` : `outline/${safeName}`;
+const svg = readFileSync(resolve(`node_modules/@tabler/icons/icons/${iconPath}.svg`), 'utf8')
+  .replace('<svg ', `<svg aria-hidden="true" focusable="false" class="icon ${className}" `)
+  .replace('width="24"', `width="${size}"`).replace('height="24"', `height="${size}"`);
+---
+<Fragment set:html={svg} />

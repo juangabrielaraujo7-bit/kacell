@@ -1,0 +1,11 @@
+---
+import type { Service } from '../data/services';
+import Icon from './Icon.astro';
+import { whatsappUrl } from '../data/business';
+interface Props { service: Service }
+const { service } = Astro.props;
+---
+<article class="service-card">
+  <a class:list={['card-media', `media-${service.slug}`]} href={`/servicos/${service.slug}/`} aria-label={`Ver detalhes: ${service.name}`} tabindex="-1" aria-hidden="true"><img src={`/images/${service.image}-400.webp`} srcset={`/images/${service.image}-400.webp 400w, /images/${service.image}-640.webp 640w`} sizes="(max-width: 599px) 235px, 226px" alt="" width="640" height="640" loading="lazy" decoding="async" /></a>
+  <div class="card-body"><span class="service-icon"><Icon name={service.icon} size={22}/></span><h3>{service.name}</h3><p>{service.short}</p><div class="card-actions"><a class="details-link" href={`/servicos/${service.slug}/`}>Ver detalhes <Icon name="arrow-up-right" size={17} /></a><a class="card-whatsapp" href={whatsappUrl(service.name.toLocaleLowerCase('pt-BR'))} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp: ${service.name}`} data-event="whatsapp_click" data-service={service.slug} data-position="card"><Icon name="brand-whatsapp" size={18}/>WhatsApp</a></div></div>
+</article>

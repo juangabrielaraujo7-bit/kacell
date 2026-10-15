@@ -1,0 +1,14 @@
+---
+import { business } from '../data/business';
+import { services } from '../data/services';
+import Icon from './Icon.astro';
+import ContactButton from './ContactButton.astro';
+---
+<footer class="site-footer dark">
+  <div class="container footer-grid">
+    <div class="footer-brand"><a href="/" aria-label="Kacell, início"><img src="/images/logo.webp" width="340" height="170" alt="Kacell Mundo da Tecnologia" loading="lazy" /></a><p>Assistência técnica e acessórios.<br />Cuidado com o que conecta você.</p><a class="social-link" href={business.instagram} target="_blank" rel="noopener noreferrer"><Icon name="brand-instagram" />Instagram <Icon name="arrow-up-right" size={16} /></a></div>
+    <div><h2>Encontre seu reparo</h2><ul>{services.map(s => <li><a href={`/servicos/${s.slug}/`}>{s.name}</a></li>)}</ul></div>
+    <div><h2>Venha até a Kacell</h2><address>{business.address}<br />{business.neighborhood}, {business.city} - {business.state}<br />CEP {business.postalCode}</address><a class="footer-phone" href={`tel:+${business.whatsapp}`}>{business.phone}</a><ContactButton label="WhatsApp" position="rodape" /></div>
+  </div>
+  <div class="container footer-bottom"><p>© {new Date().getFullYear()} Kacell. Todos os direitos reservados.</p><a href="/privacidade/">Privacidade</a><a href="#top">Voltar ao topo <Icon name="arrow-up" size={16} /></a></div>
+</footer>

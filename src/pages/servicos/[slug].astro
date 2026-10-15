@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import ContactButton from '../../components/ContactButton.astro';
+import Faq from '../../components/Faq.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { services } from '../../data/services';
+export function getStaticPaths(){ return services.map(service=>({params:{slug:service.slug},props:{service}})); }
+const { service } = Astro.props;
+const related=service.related.map(slug=>services.find(s=>s.slug===slug)!);
+---
+<Layout title={`${service.name} em Sorocaba | Kacell`} description={service.description} breadcrumbs={[{name:'Início',path:'/'},{name:service.name,path:`/servicos/${service.slug}/`}]}>
+  <section class="service-hero dark"><div class="container"><nav class="breadcrumbs" aria-label="Caminho de navegação"><a href="/">Início</a><Icon name="chevron-right" size={14}/><a href="/#servicos">Serviços</a><Icon name="chevron-right" size={14}/><span aria-current="page">{service.name}</span></nav><div class="service-hero-grid"><div><span class="eyebrow">Kacell • Vila Hortência</span><h1>{service.title}</h1><p>{service.intro}</p><ContactButton service={service.name.toLocaleLowerCase('pt-BR')} position="hero-servico"/></div><figure class:list={['service-hero-image',`media-${service.slug}`]}><img src={`/images/${service.image}-960.webp`} srcset={`/images/${service.image}-640.webp 640w, /images/${service.image}-960.webp 960w`} sizes="(max-width: 767px) 90vw, 40vw" alt={service.alt} width="960" height="960" fetchpriority="high"/><figcaption>Imagem ilustrativa do serviço.</figcaption></figure></div></div></section>
+  <section class="section light"><div class="container service-explanation"><div><span class="eyebrow">Reconheceu algum sinal?</span><h2>Entenda o que<br />pode estar acontecendo.</h2><ul class="symptom-list">{service.symptoms.map(s=><li><Icon name="check" size={20}/>{s}</li>)}</ul></div><div class="explanation-copy"><h2>Primeiro, avaliamos.<br />Depois, orientamos.</h2><p>{service.explanation}</p><aside><Icon name="info-circle" size={24}/><p>{service.note}</p></aside><p>Atendemos celulares e tablets Apple/iPhone, Samsung, Motorola e Xiaomi. Consulte o serviço para o seu modelo.</p></div></div></section>
+  <section class="section dark"><div class="container faq-grid"><div class="section-heading"><h2>Sobre esse reparo.</h2><p>Informação clara para você decidir.</p></div><Faq items={service.faqs}/></div></section>
+  <section class="section light"><div class="container"><div class="section-heading"><h2>Outros cuidados<br />com seu aparelho.</h2></div><div class="related-grid">{related.map(s=><ServiceCard service={s}/>)}</div></div></section>
+  <section class="service-final dark"><div class="container"><div><h2>Vamos cuidar do seu aparelho?</h2><p>Conte o modelo e o que aconteceu. A gente orienta o próximo passo.</p></div><ContactButton service={service.name.toLocaleLowerCase('pt-BR')} position="final-servico"/><a class="text-link" href="/#localizacao">Ver endereço da loja <Icon name="arrow-up-right" size={18}/></a></div></section>
+</Layout>

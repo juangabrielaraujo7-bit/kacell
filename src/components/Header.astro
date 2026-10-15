@@ -1,0 +1,21 @@
+---
+import { services } from '../data/services';
+import { reviews, results } from '../data/business';
+import Icon from './Icon.astro';
+import ContactButton from './ContactButton.astro';
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Kacell, página inicial"><img src="/images/logo.webp" width="340" height="170" alt="Kacell Mundo da Tecnologia" fetchpriority="high" /></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Abrir menu"><Icon name="menu-2" /></button>
+    <nav id="main-navigation" class="main-nav" aria-label="Navegação principal">
+      <details class="services-dropdown"><summary>Serviços <Icon name="chevron-down" size={15} /></summary><div class="dropdown-panel"><a href="/#servicos">Todos os serviços <Icon name="arrow-right" size={17} /></a>{services.map(service => <a href={`/servicos/${service.slug}/`}>{service.name}</a>)}</div></details>
+      {results.length > 0 && <a href="/#antes-e-depois">Antes e depois</a>}
+      {reviews.length > 0 && <a href="/#avaliacoes">Avaliações</a>}
+      <a href="/#diferenciais">Por que a Kacell</a>
+      <a href="/#duvidas">Dúvidas</a>
+      <a href="/#localizacao">Localização</a>
+      <ContactButton label="WhatsApp" position="cabecalho" />
+    </nav>
+  </div>
+</header>
