@@ -8,7 +8,7 @@ import sharp from 'sharp';
 const root=path.resolve('dist');
 const config=JSON.parse(await readFile('vercel.json','utf8'));
 const headers=Object.fromEntries(config.headers[0].headers.map(h=>[h.key,h.value]));
-const types={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.webp':'image/webp','.png':'image/png','.jpg':'image/jpeg','.woff2':'font/woff2','.xml':'application/xml','.txt':'text/plain'};
+const types={'.svg':'image/svg+xml','.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.webp':'image/webp','.png':'image/png','.jpg':'image/jpeg','.woff2':'font/woff2','.xml':'application/xml','.txt':'text/plain'};
 const server=createServer(async(req,res)=>{try{let rel=decodeURIComponent(new URL(req.url,'http://localhost').pathname);let file=path.resolve(root,'.'+rel);if(!file.startsWith(root+path.sep)&&file!==root){res.writeHead(403);res.end();return;}if((await stat(file)).isDirectory())file=path.join(file,'index.html');const body=await readFile(file);res.writeHead(200,{...headers,'Content-Type':types[path.extname(file)]||'application/octet-stream'});res.end(body);}catch{res.writeHead(404,{...headers,'Content-Type':'text/html; charset=utf-8'});res.end(await readFile(path.join(root,'404.html')));}});
 await new Promise(resolve=>server.listen(4322,'127.0.0.1',resolve));
 const origin='http://127.0.0.1:4322';
@@ -62,6 +62,24 @@ try{
   await page.setViewportSize({width:640,height:450});await page.goto(origin);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));report.interaction.push('Landscape and 200% equivalent CSS viewport reflow');
   await page.emulateMedia({reducedMotion:'reduce'});assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),'auto');
   const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const np=await nojs.newPage();await np.goto(origin);assert(await np.locator('h1').isVisible());assert(await np.locator('.main-nav').isVisible());assert(await np.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await nojs.close();report.interaction.push('Core content and navigation work without JavaScript');
+  await page.goto(origin);await page.emulateMedia({reducedMotion:'reduce'});
+  assert.equal(await page.locator('[data-gallery-src]').count(),3);
+  assert.equal(await page.locator('.review-card').count(),3);
+  assert.equal(await page.locator('a[href*="contato-com-liquido"]').count(),0);
+  for(const width of [390,1440]){
+    await page.setViewportSize({width,height:900});
+    for(const section of ['antes-e-depois','avaliacoes'])await page.locator('#'+section).screenshot({path:`artifacts/${section}-${width}.png`});
+  }
+  await page.setViewportSize({width:390,height:844});
+  const trigger=page.locator('[data-gallery-src]').first();await trigger.click();
+  assert(await page.locator('#gallery-dialog').isVisible());
+  await page.locator('#gallery-dialog img').evaluate(img=>img.decode());
+  await page.keyboard.press('Escape');assert(!(await page.locator('#gallery-dialog').isVisible()));
+  assert(await trigger.evaluate(el=>el===document.activeElement));
+  await page.locator('[data-direction="1"]').click();
+  await page.waitForFunction(()=>document.querySelector('[data-carousel-status]').textContent==='Avaliação 2 de 3');
+  const removed=await page.goto(origin+'/servicos/contato-com-liquido/');assert.equal(removed.status(),404);
+  report.interaction.push('Three real result photos, gallery opens and Escape returns focus','Only three reviews; mobile next button advances to second review','Removed liquid service returns 404 and has no links');
   const missing=await page.goto(origin+'/nao-existe/');assert.equal(missing.status(),404);report.interaction.push('Unknown URL returns real 404');
   for(const file of await readdir('public/images'))if(file.endsWith('.webp')&&!['logo.webp','symbol.webp'].includes(file))assert((await sharp('public/images/'+file).metadata()).hasAlpha,file);
   report.errors=errors.filter(e=>!e.includes('404')&&!e.includes('google')&&!e.includes('ERR_INTERNET_DISCONNECTED'));

@@ -1,3 +1,4 @@
+import { selectedReviews } from './reviews';
 export const business = {
   name: 'Kacell Assistência Técnica e Acessórios',
   phone: '(15) 99749-2826',
@@ -11,10 +12,13 @@ export const business = {
   facade: null as { src: string; alt: string; width: number; height: number } | null,
 };
 export const whatsappUrl = (service?: string) => `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(service ? `Olá, Kacell! Vim pelo site e gostaria de um orçamento para ${service}. Meu aparelho é:` : 'Olá, Kacell! Vim pelo site e gostaria de um orçamento para meu aparelho.')}`;
-export type Review = { author: string; text: string; rating: number; date: string };
-export const reviews: Review[] = [];
-export const reviewsUpdatedAt: string | null = null;
-export const results: { src: string; alt: string; caption: string; width: number; height: number }[] = [];
+export const reviews = selectedReviews;
+export const reviewsUpdatedAt = '2026-10-15';
+export const results = [
+  { src:'/images/results/traseira-restaurada.webp', card:'/images/results/traseira-restaurada-card.webp', thumbnail:'/images/results/traseira-restaurada-440.webp', alt:'Aparelho com traseira restaurada à esquerda e a traseira quebrada removida à direita', caption:'Traseira restaurada', width:662, height:797 },
+  { src:'/images/results/vidro-frontal-01.webp', card:'/images/results/vidro-frontal-01-card.webp', thumbnail:'/images/results/vidro-frontal-01-440.webp', alt:'Celular com a tela ligada à esquerda e o vidro frontal trincado removido à direita', caption:'Troca do vidro frontal', width:647, height:806 },
+  { src:'/images/results/vidro-frontal-02.webp', card:'/images/results/vidro-frontal-02-card.webp', thumbnail:'/images/results/vidro-frontal-02-440.webp', alt:'Celular com vidro frontal íntegro e tela ligada à esquerda; vidro quebrado removido à direita', caption:'Vidro frontal recuperado', width:642, height:782 },
+];
 export const homeFaq = [
   { q: 'O orçamento é gratuito?', a: 'Sim, o orçamento é gratuito. Conte pelo WhatsApp o que aconteceu e informe a marca e o modelo do aparelho. A necessidade de avaliação presencial será orientada pela equipe.' },
   { q: 'Os reparos têm garantia?', a: 'Sim. A Kacell oferece garantia nos reparos. Consulte o prazo, a cobertura e as condições para o serviço do seu aparelho antes de autorizar o atendimento.' },

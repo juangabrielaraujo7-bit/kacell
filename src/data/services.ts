@@ -48,7 +48,7 @@ export const services: Service[] = [
     symptoms:['Aparelho que não liga','Reinícios ou falhas recorrentes','Funções que deixam de operar após um dano'],
     explanation:'A placa interliga os componentes do aparelho. Sintomas semelhantes podem ter causas diferentes, por isso a equipe avalia o caso antes de indicar intervenções, prazo ou orçamento. A reparabilidade depende do dano identificado.',
     note:'Nenhum sintoma isolado confirma um defeito de placa. A viabilidade do reparo só pode ser informada após a avaliação.',
-    faqs:[{q:'Toda placa pode ser reparada?',a:'Não é possível garantir. A possibilidade depende da extensão do dano, do modelo e das condições dos componentes.'},{q:'O reparo garante a recuperação dos meus arquivos?',a:'Não. A preservação ou recuperação dos dados não pode ser garantida. Informe à equipe se há arquivos importantes antes de autorizar qualquer serviço.'}], related:['contato-com-liquido','conector-de-carga']
+    faqs:[{q:'Toda placa pode ser reparada?',a:'Não é possível garantir. A possibilidade depende da extensão do dano, do modelo e das condições dos componentes.'},{q:'O reparo garante a recuperação dos meus arquivos?',a:'Não. A preservação ou recuperação dos dados não pode ser garantida. Informe à equipe se há arquivos importantes antes de autorizar qualquer serviço.'}], related:['camera-audio-microfone','conector-de-carga']
   },
   {
     slug:'camera-audio-microfone', name:'Câmeras, áudio e microfone', short:'Fotos sem foco, som falhando ou dificuldade nas chamadas? Encontre orientação para o reparo.',
@@ -58,16 +58,6 @@ export const services: Service[] = [
     symptoms:['Câmera sem imagem ou com dificuldade de foco','Som ausente, baixo ou distorcido','Voz que não é captada em chamadas ou gravações'],
     explanation:'Câmeras, alto-falantes e microfones têm funções diferentes e podem apresentar falhas específicas. A equipe verifica o comportamento relatado e orienta o serviço conforme o componente, o modelo e a disponibilidade de peças.',
     note:'Ao pedir orçamento, descreva se o problema ocorre nas chamadas, nas gravações, nas fotos ou em mais de uma função.',
-    faqs:[{q:'Vocês avaliam a câmera frontal e a traseira?',a:'Sim, consulte a disponibilidade para o modelo e indique qual câmera apresenta o problema.'},{q:'Meu áudio falha só em chamadas. É o microfone?',a:'Não é possível concluir a causa à distância. Informar quando a falha acontece ajuda a direcionar a avaliação.'}], related:['reparo-de-placa','contato-com-liquido']
-  },
-  {
-    slug:'contato-com-liquido', name:'Contato com líquido', short:'O aparelho molhou? Procure orientação para avaliar os danos e a possibilidade de reparo.',
-    title:'Reparo de celular após contato com líquido em Sorocaba', description:'Seu celular ou tablet molhou? Consulte a Kacell em Sorocaba para avaliar os danos e a possibilidade de reparo após contato com líquido.',
-    intro:'Após contato com líquido, o aparelho precisa de atenção mesmo que continue ligando. Fale com a equipe para receber orientação.',
-    icon:'droplet', image:'contato-com-liquido', alt:'Ilustração de um smartphone desligado com gotas de água na superfície',
-    symptoms:['Falhas após contato com água ou outro líquido','Tela, som ou carregamento alterados','Aparelho desligando ou sem ligar após molhar'],
-    explanation:'O contato com líquido pode afetar diferentes componentes. A avaliação verifica o estado do aparelho e as possibilidades de intervenção. O resultado depende da extensão dos danos e não há garantia prévia de recuperação.',
-    note:'Evite conectar o aparelho ao carregador ou tentar ligá-lo repetidamente. Não aplique calor. Procure orientação técnica.',
-    faqs:[{q:'Se o aparelho ainda liga, precisa ser avaliado?',a:'O funcionamento imediato não descarta danos internos. Informe o que aconteceu e consulte a orientação da equipe.'},{q:'É possível garantir que vai voltar a funcionar?',a:'Não. A viabilidade e o resultado do reparo dependem dos danos encontrados durante a avaliação.'}], related:['reparo-de-placa','camera-audio-microfone']
+    faqs:[{q:'Vocês avaliam a câmera frontal e a traseira?',a:'Sim, consulte a disponibilidade para o modelo e indique qual câmera apresenta o problema.'},{q:'Meu áudio falha só em chamadas. É o microfone?',a:'Não é possível concluir a causa à distância. Informar quando a falha acontece ajuda a direcionar a avaliação.'}], related:['reparo-de-placa','troca-de-vidro']
   }
 ];

@@ -1,0 +1,56 @@
+/* Real photographs retain their complete framing. Labels stay outside the image. */
+.results-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.result-card{min-width:0;border:1px solid #343934;border-radius:16px;overflow:hidden;background:#1a1e19}
+.gallery-trigger{overflow:hidden;background:#111311;cursor:zoom-in}
+.gallery-trigger img{width:100%;height:auto;aspect-ratio: .82;object-fit:contain;border-radius:0}
+.gallery-trigger:focus-visible{outline-offset:-5px}
+.result-card figcaption{padding:23px;margin:0}
+.result-title{display:flex;gap:12px;justify-content:space-between;align-items:center}
+.result-title h3{font-size:19px;line-height:1.3;letter-spacing:-.025em}
+.result-title>.icon{color:#b3c0ad}
+.result-legend{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px;padding-top:17px;border-top:1px solid #3b4436}
+.result-legend span{display:flex;flex-direction:column;color:#b1b7b1;font-size:10px;line-height:1.8}
+.result-legend strong{font-size:12px;color:#e2e9de}
+.result-legend span:first-child strong{color:var(--green)}
+#gallery-dialog{padding:52px 20px 20px;width:min(760px,95vw)}
+.gallery-image img{max-height:75vh;max-height:75dvh;width:100%;object-fit:contain}
+.gallery-caption{font-size:12px;color:#c1c9bc;margin-top:14px;text-align:center}
+.review-track{gap:24px;align-items:stretch;scrollbar-width:thin;scrollbar-color:#c5cebf transparent}
+.review-card{flex:0 0 calc((100% - 48px)/3);display:flex;flex-direction:column;padding:28px;min-width:0;border-radius:16px}
+.review-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.review-rating{color:#397326}
+.review-rating .icon{stroke-width:0}
+.review-source{display:flex;align-items:center;gap:6px;font-size:11px;color:#626962}
+.review-card blockquote{font-size:15px;line-height:1.85;margin:24px 0;letter-spacing:-.01em}
+.review-card figcaption{margin-top:auto;padding-top:20px;border-top:1px solid #e5e9e1;line-height:1.8}
+.review-card figcaption strong{font-size:14px;color:var(--ink)}
+.review-card figcaption span{font-size:11px}
+.review-card .review-excerpt{font-size:10px;margin:-13px 0 22px;color:#626962}
+.review-dates-note{font-size:11px;margin-top:23px;color:#626962}
+.carousel-controls{display:none}
+.supplied-brands{max-width:1120px;gap:45px;margin-block:48px 30px}
+.supplied-brands li{min-width:0;min-height:74px}
+.supplied-brands img{width:100%;height:54px;object-fit:contain}
+.supplied-brands .brand-iphone{max-width:180px;height:45px}
+.supplied-brands .brand-samsung{max-width:185px;height:33px}
+.supplied-brands .brand-motorola{max-width:210px;height:48px}
+.supplied-brands .brand-xiaomi{max-width:190px;height:53px}
+/* Expanded navigation remains on a single row with the new section links. */
+@media(min-width:1024px){.main-nav{gap:clamp(10px,1.5vw,22px)}.header-inner{gap:24px}.main-nav>a[href="/#duvidas"]{display:none}}
+@media(max-width:1199px){.review-card{padding:22px}.result-card figcaption{padding:19px}.result-title h3{font-size:17px}.supplied-brands{gap:30px}}
+@media(max-width:767px){
+  .results-grid{grid-template-columns:1fr;gap:24px;max-width:480px;margin-inline:auto}
+  .result-card figcaption{padding:22px}.result-title h3{font-size:20px}
+  .result-legend span{font-size:11px}.result-legend strong{font-size:13px}
+  .review-track{gap:16px;scrollbar-width:none}.review-track::-webkit-scrollbar{display:none}
+  .review-card{flex-basis:100%;padding:25px;min-height:350px}
+  .review-card blockquote{font-size:15px}.review-card figcaption strong{font-size:15px}
+  .carousel-controls{display:flex;margin-top:20px;gap:10px}
+  .carousel-controls>[data-carousel-status]{margin-right:auto;color:#626962}
+  .carousel-controls button{background:#fff;display:grid;place-items:center}
+  .carousel-controls button:disabled{opacity:.4;cursor:default}
+  .review-dates-note{font-size:10px;margin-top:20px}
+  .supplied-brands{gap:28px 25px;margin-block:34px 24px}
+  .supplied-brands li{min-height:60px}.supplied-brands .brand-iphone{height:34px}.supplied-brands .brand-samsung{height:23px}.supplied-brands .brand-motorola{height:34px}.supplied-brands .brand-xiaomi{height:39px}
+}
+@media(prefers-reduced-motion:reduce){.review-track{scroll-behavior:auto}}

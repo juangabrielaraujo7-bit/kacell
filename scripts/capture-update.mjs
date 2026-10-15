@@ -1,0 +1,3 @@
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+try { const page=await browser.newPage(); await page.goto('http://127.0.0.1:4323/',{waitUntil:'networkidle'}); await page.emulateMedia({reducedMotion:'reduce'}); await page.locator('img').evaluateAll(imgs=>Promise.all(imgs.map(img=>{img.loading='eager';return img.decode()}))); for(const width of [390,1440]) {await page.setViewportSize({width,height:900});for(const section of ['antes-e-depois','avaliacoes']) await page.locator('#'+section).screenshot({path:'artifacts/'+section+'-'+width+'.png',style:'.site-header,.skip-link{visibility:hidden!important}'});} } finally {await browser.close();}

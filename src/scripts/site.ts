@@ -57,8 +57,11 @@ let galleryTrigger: HTMLButtonElement | null = null;
 document.querySelectorAll<HTMLButtonElement>('[data-gallery-src]').forEach(button=>button.addEventListener('click',()=>{
   if(!gallery) return;
   galleryTrigger=button;
-  const img=gallery.querySelector('img');
-  if(img){ img.src=button.dataset.gallerySrc!; img.alt=button.dataset.galleryAlt || ''; }
+  const img=document.createElement('img');
+  img.src=button.dataset.gallerySrc!; img.alt=button.dataset.galleryAlt || '';
+  gallery.querySelector('.gallery-image')?.replaceChildren(img);
+  const caption=gallery.querySelector('.gallery-caption');
+  if(caption) caption.textContent=`${button.dataset.galleryCaption}. Aparelho reparado à esquerda; peça danificada à direita.`;
   gallery.showModal();
 }));
 gallery?.querySelector('button')?.addEventListener('click',()=>gallery.close());

@@ -1,6 +1,6 @@
 # Kacell | Assistência técnica em Sorocaba
 
-Site estático em Astro e TypeScript, com CSS próprio, fonte Manrope local e ícones Tabler. Home, sete páginas de serviços, política de privacidade e página 404. Os botões de contato abrem o WhatsApp com mensagens específicas; não enviam mensagens automaticamente.
+Site estático em Astro e TypeScript, com CSS próprio, fonte Manrope local e ícones Tabler. Home, seis páginas de serviços, política de privacidade e página 404. Os botões de contato abrem o WhatsApp com mensagens específicas; não enviam mensagens automaticamente.
 
 ## Executar
 
@@ -19,7 +19,8 @@ O resultado de produção fica em `dist/`. Não é necessário banco de dados, s
 ## Conteúdo
 
 - `src/data/business.ts`: contatos, endereço, horários, mídia real da abertura, fachada, perguntas, resultados e avaliações.
-- `src/data/services.ts`: sete serviços, textos, sintomas, perguntas e serviços relacionados.
+- `src/data/services.ts`: seis serviços, textos, sintomas, perguntas e serviços relacionados.
+- `src/data/reviews.ts`: seis avaliações transcritas e seleção das três exibidas.
 - `src/styles/global.css`: tokens e composição responsiva.
 - `src/components/`: cabeçalho, rodapé, cards, FAQ, localização e prova social.
 - `public/images/`: imagens otimizadas em WebP com transparência real, em três resoluções.
@@ -28,7 +29,7 @@ O resultado de produção fica em `dist/`. Não é necessário banco de dados, s
 
 As imagens originais e o briefing foram preservados na pasta local fornecida pelo responsável. Não foram enviados ao repositório público; guarde um backup desses originais. `scripts/prepare-assets.mjs` permite repetir a preparação se os arquivos originais forem colocados na raiz, com seus nomes originais. A geração inicial dos assets já foi concluída: o build não depende desses arquivos.
 
-Os nomes das marcas atendidas são texto. O ícone Apple vem da biblioteca Tabler; não foi apresentado como logo oficial nem implica autorização. A logo Kacell é a fornecida pelo responsável, sem redesenho.
+As marcas atendidas usam as logos fornecidas pelo responsável, com fundos removidos quando necessário, sem redesenho. A logo Kacell também é a fornecida. Veja `docs/ATUALIZACAO-MATERIAIS.md` para a relação dos novos materiais e `scripts/prepare-update-assets.mjs` para reproduzir a otimização.
 
 ## GitHub e hospedagem
 
@@ -51,7 +52,7 @@ Após conectar o domínio, conferir HTTPS, redirecionamento HTTP, domínio prefe
 
 ## Atualizar mídias e avaliações
 
-As listas `results` e `reviews` começam vazias por falta de material confirmado. As seções e seus links de navegação só aparecem quando há conteúdo. O responsável autorizou seguir assim em 15/10/2026. Não há fotos fictícias, depoimentos inventados ou nota geral presumida.
+As listas `results` e `reviews` contêm três fotografias reais e três avaliações dos materiais recebidos em 15/10/2026. As demais avaliações estão preservadas em `src/data/reviews.ts`. Não há fotos fictícias, depoimentos inventados ou nota geral presumida.
 
 1. Adicione fotografias reais autorizadas em `public/images/`.
 2. Preencha os objetos tipados em `business.ts`, incluindo dimensões e texto alternativo.

@@ -1,0 +1,12 @@
+// Exact transcription from supplied Google review screenshots, not a live feed.
+// Relative dates are preserved as shown in the supplied material, not recalculated.
+export const reviewArchive = [
+  { id:'eliezer', author:'Eliezer Martins', rating:5, date:'5 meses atrás', source:'Captura de tela 2026-10-15 115918.png', text:'Deus abençoe grandemente mesmo não sabia que dava pra trocar só o vidro bem mais em conta e o trabalho top tela original tudo de bom' },
+  { id:'clayton', author:'Clayton Gori', rating:5, date:'4 anos atrás', source:'Captura de tela 2026-10-15 115943.png', text:'Assistência técnica top !! Levei meu iPhone para troca de vidro !! O cara e bom ! Gastei 50% a menos na troca de vidro !!outras assistência queria troca a tela toda na kacell foi feito só a troca de vidro ficou filé ... Muito obrigado pela transparência e profissionalismo !!' },
+  { id:'nivaldo', author:'Nivaldo Junior', rating:5, date:'2 meses atrás', source:'Captura de tela 2026-10-15 115958.png', text:'⭐ ⭐ ⭐ ⭐ ⭐\n\nExcelente experiência com a Kacell! Atendimento rápido, transparente e com muita qualidade. Levei meu aparelho para fazer a troca do vidro da tela e o resultado ficou impecável, parecendo novo.\n\nDá para perceber que a equipe é especializada e realmente entende de reparo em celulares. Explicaram todo o serviço antes de iniciar e entregaram dentro do prazo combinado.', excerpt:'Excelente experiência com a Kacell! Atendimento rápido, transparente e com muita qualidade. Levei meu aparelho para fazer a troca do vidro da tela e o resultado ficou impecável, parecendo novo.' },
+  { id:'luiz', author:'luiz silveira', rating:5, date:'5 meses atrás', source:'Captura de tela 2026-10-15 120011.png', text:'Excelente atendimento, qualidade técnica impecável, profissionais bem preparados e equipados.' },
+  { id:'mauricio', author:'Mauricio Ribeiro', rating:5, date:'5 meses atrás', source:'Captura de tela 2026-10-15 120017.png', text:'Apenas uma palavra: incrível!\nParabéns pelo profissionalismo. Excelente.' },
+  { id:'guilherme', author:'GUILHERME FRATTES JUNQUEIRA', rating:5, date:'4 anos atrás', source:'Captura de tela 2026-10-15 120029.png', text:'Excelente profissional! Já consertou dois celulares meus utilizando peças originais e os aparelhos ficaram perfeitos! O preço é justo e condizente com a qualidade das peças e do serviço realizado.' },
+];
+const selected = ['eliezer','nivaldo','luiz'];
+export const selectedReviews = selected.map(id=>reviewArchive.find(review=>review.id===id)!);
